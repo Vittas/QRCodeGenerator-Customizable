@@ -4,32 +4,39 @@ import { QrCodeCard } from './components/QrCodeCard'
 import QRCodeStyling from 'qr-code-styling'
 
 interface IQRCodeContext{
-  QRCode: QRCodeStyling | undefined
-  setQRCode: any
-  generateQRCode: any
+  QRCode: QRCodeStyling[]
+  setQRCode: React.Dispatch<React.SetStateAction<QRCodeStyling[]>>
+  generateQRCode: (url?: string) => void
+  verifyExistQRCode: () => boolean
 
 }
 
 export const QRCodeContext = createContext({} as IQRCodeContext)
 
 const QRCodeContextProvider = ({children}: any) => {
-  const [QRCode,  setQRCode] = useState<QRCodeStyling | undefined>()
+  
+  const [QRCode,  setQRCode] = useState<QRCodeStyling[]>([])
   
   const generateQRCode = (url?: string | undefined) =>{
-    const QRCode: QRCodeStyling | undefined = new QRCodeStyling({
+    const qrCode: QRCodeStyling = new QRCodeStyling({
+
         width: 300,
         height: 300,
         data: `${url}`
     })
     // const QRCode_Box = document.getElementById("QRCode-Box")
     // QRCode.append(QRCode_Box || undefined)
-    setQRCode(QRCode)
+    setQRCode([qrCode])
     // QRCode.download()
     
   }
 
+  const verifyExistQRCode = () => {
+    return QRCode.length > 0
+  }
+
   return(
-    <QRCodeContext.Provider value={{ QRCode, setQRCode, generateQRCode }}>
+    <QRCodeContext.Provider value={{ QRCode, setQRCode, generateQRCode, verifyExistQRCode }}>
       {children}
     </QRCodeContext.Provider>
   )
