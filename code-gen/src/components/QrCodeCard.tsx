@@ -1,20 +1,21 @@
-import QRCodeStyling from 'qr-code-styling'
 import { useContext, useEffect, useState } from 'react'
-import { QRCodeContext } from '../App'
-
+import { QRCodeContext } from '../QRCodeContextProvider'
 
 
 export const QrCodeCard = () => {
 
-    const [url, setUrl] = useState<string>('')
 
     const Context = useContext(QRCodeContext)
+    const qrCodeBox: HTMLElement | null = document.getElementById('QRCode-Box')
 
+    
     useEffect(() => {
-        const qrCodeBox = document.getElementById('QRCode-Box')
         if (qrCodeBox && Context.verifyExistQRCode()) {
             qrCodeBox.innerHTML = ''
             Context.QRCode[0].append(qrCodeBox)
+        }
+        else{
+            Context.generateQRCode()    
         }
     }, [Context.QRCode])
 
@@ -27,16 +28,14 @@ export const QrCodeCard = () => {
 
     return (
         <>
-            <div className='flex justify-center h-screen items-center'>
-                <div className='flex flex-col bg-slate-500 p-[2em] min-h-[50%] rounded-md space-y-[2em]'>
+                <div className='flex flex-col p-[2em] min-h-[50%] space-y-[2em]'>
                     <h1 className='text-center text-white font-bold text-[24px]'>QR Code Generator</h1>
-                    <div className='flex justify-center space-x-[2em]'>
-                        <input type="text" value={url} onChange={(evt) => setUrl(evt.target.value)} required className='p-[0.5em] rounded-md' placeholder='Your link...' />
-                        <button className='text-white bg-blue-700 p-[0.5em] rounded-md' onClick={() => { Context.generateQRCode(url) }}>Generate</button>
-                    </div>
+
 
                     <div id='QRCode-Box' className='flex justify-center'>
                         {/* show the QRCode */}
+
+
                     </div>
 
                     <div className='flex justify-center space-y-4'>
@@ -47,7 +46,6 @@ export const QrCodeCard = () => {
 
 
                 </div>
-            </div>
         </>
     )
 }
