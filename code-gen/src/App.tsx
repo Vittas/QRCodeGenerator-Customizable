@@ -1,6 +1,6 @@
 import './App.css'
 import { QrCodeCard } from './components/QrCodeCard'
-import { QRCodeSettingsCard } from './components/QRCodeSettingsCard'
+import { QRCodeSettingsCard } from './components/QRCodeSettings/QRCodeSettingsCard'
 import { QRCodeContextProvider } from './QRCodeContextProvider'
 
 

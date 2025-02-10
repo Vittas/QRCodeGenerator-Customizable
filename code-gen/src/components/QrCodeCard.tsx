@@ -1,28 +1,28 @@
 import { useContext, useEffect, useState } from 'react'
 import { QRCodeContext } from '../QRCodeContextProvider'
+import QRCodeStyling from 'qr-code-styling'
 
 
 export const QrCodeCard = () => {
 
 
     const Context = useContext(QRCodeContext)
-    const qrCodeBox: HTMLElement | null = document.getElementById('QRCode-Box')
-
+    const qrCodeBox: HTMLElement = document.getElementById('QRCode-Box')!
     
     useEffect(() => {
-        if (qrCodeBox && Context.verifyExistQRCode()) {
+        const listqrcode = [Context.qrCodeParameters]
+        if(qrCodeBox){
             qrCodeBox.innerHTML = ''
-            Context.QRCode[0].append(qrCodeBox)
+            listqrcode[0].append(qrCodeBox)
         }
         else{
-            Context.generateQRCode()    
+            listqrcode[0].append(qrCodeBox)
         }
-    }, [Context.QRCode])
+    }, [Context.qrCodeParameters])
 
     const downloadQRCode = () => {
-        if (Context.QRCode != undefined) {
-            Context.QRCode[0].download({ name: 'QR-Code', extension: 'svg' })
-        }
+        Context.qrCodeParameters.download({ name: 'QR-Code', extension: 'svg' })
+        
     }
 
 
@@ -34,12 +34,10 @@ export const QrCodeCard = () => {
 
                     <div id='QRCode-Box' className='flex justify-center'>
                         {/* show the QRCode */}
-
-
                     </div>
 
                     <div className='flex justify-center space-y-4'>
-                        {Context.QRCode[0] != undefined &&
+                        {Context.qrCodeParameters != undefined &&
                             <button className='bg-blue-700 text-white p-2 rounded-md' onClick={downloadQRCode}>Download</button>
                         }
                     </div>
