@@ -1,6 +1,5 @@
-import { useContext, useEffect, useState } from 'react'
+import { useContext, useEffect } from 'react'
 import { QRCodeContext } from '../QRCodeContextProvider'
-import QRCodeStyling from 'qr-code-styling'
 
 
 export const QrCodeCard = () => {

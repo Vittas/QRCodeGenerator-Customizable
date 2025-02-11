@@ -1,5 +1,5 @@
 import QRCodeStyling, { CornerDotType, CornerSquareType, DotType } from "qr-code-styling"
-import { createContext, useEffect, useState } from "react"
+import { createContext, useState } from "react"
 
 interface IQRCodeContext{
     qrCodeParameters: QRCodeStyling,
