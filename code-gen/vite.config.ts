@@ -4,6 +4,8 @@ import tailwindcss from "tailwindcss";
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  plugins: [react()],
+  base: "/QRCodeGenerator-Customizable",
   css: {
     postcss: {
       plugins: [tailwindcss()],
