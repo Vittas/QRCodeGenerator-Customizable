@@ -7,9 +7,13 @@ export const QrCodeCard = () => {
 
     const Context = useContext(QRCodeContext)
     const qrCodeBox: HTMLElement = document.getElementById('QRCode-Box')!
-    
+    const listqrcode = [Context.qrCodeParameters]
+
     useEffect(() => {
-        const listqrcode = [Context.qrCodeParameters]
+        Context.setUrl(`There's any URL here!`)
+    }, [])
+
+    useEffect(() => {
         if(qrCodeBox){
             qrCodeBox.innerHTML = ''
             listqrcode[0].append(qrCodeBox)
