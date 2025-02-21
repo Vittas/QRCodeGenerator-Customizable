@@ -43,9 +43,10 @@ export const QrCodeCard = () => {
 
                     <div className='flex justify-center space-y-4'>
                         {Context.qrCodeParameters != undefined &&
-                        <div>
+                        <div className='space-x-2'>
                             <button className='bg-blue-700 text-white p-2 rounded-md' onClick={downloadQRCode}>Download</button>
-                            <select onChange={(downloadType)=>{setQRCodeExtension(downloadType.target.value as FileExtension)}}>
+                            <select onChange={(downloadType)=>{setQRCodeExtension(downloadType.target.value as FileExtension)}}
+                                className='p-2 rounded-md'>
                                     <option value="svg">svg</option>
                                     <option value="png">png</option>        
                                     <option value="jpeg">jpeg</option>        
