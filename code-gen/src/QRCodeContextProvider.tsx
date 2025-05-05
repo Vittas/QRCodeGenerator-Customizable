@@ -48,7 +48,7 @@ export const QRCodeContextProvider = ({children}: any) => {
   
       width: 500,
       height: 500,
-      data: `${url}`,
+      data: url != "" ? `${url}` : "There's any URL here",
       image: `${image}`,
       backgroundOptions:{
         color: `${backgroundColor}`
