@@ -10,6 +10,8 @@ interface IQRCodeContext{
     setCenterDotColor: React.Dispatch<React.SetStateAction<string>>,
     setCornerDotColor: React.Dispatch<React.SetStateAction<string>>,
     setSquareColor: React.Dispatch<React.SetStateAction<string>>,
+    setBackgroundColor: React.Dispatch<React.SetStateAction<string>>,
+
 
     setCenterDotType: React.Dispatch<React.SetStateAction<DotType>>,
     setcornerDotType: React.Dispatch<React.SetStateAction<CornerDotType>>,
@@ -31,6 +33,8 @@ export const QRCodeContextProvider = ({children}: any) => {
     const [centerDotColor, setCenterDotColor] = useState<string>('#000000')
     const [cornerDotColor, setCornerDotColor] = useState<string>('#000000')
     const [squareColor, setSquareColor] = useState<string>('#000000')
+    const [backgroundColor, setBackgroundColor] = useState<string>('#ffffff')
+
 
     // THESE ARE THE FORMAT TYPE OF QRCODE STYLE
 
@@ -46,6 +50,9 @@ export const QRCodeContextProvider = ({children}: any) => {
       height: 500,
       data: `${url}`,
       image: `${image}`,
+      backgroundOptions:{
+        color: `${backgroundColor}`
+      },
       dotsOptions: {
         color: `${centerDotColor}`, 
         type: `${centerDotType}`
@@ -69,7 +76,7 @@ export const QRCodeContextProvider = ({children}: any) => {
 
   
     return(
-      <QRCodeContext.Provider value={{ qrCodeParameters, setUrl, setCenterDotColor, setCornerDotColor, setImage, setSquareColor, setCenterDotType, setcornerDotType, setSquareType }}>
+      <QRCodeContext.Provider value={{ qrCodeParameters, setUrl, setCenterDotColor, setCornerDotColor, setImage, setSquareColor, setBackgroundColor, setCenterDotType, setcornerDotType, setSquareType }}>
         {children}
       </QRCodeContext.Provider>
     )

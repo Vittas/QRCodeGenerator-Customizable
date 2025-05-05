@@ -16,7 +16,7 @@ export const QrCodeCard = () => {
     }, [])
 
     useEffect(() => {
-        if(qrCodeBox){
+        if (qrCodeBox) {
             qrCodeBox.innerHTML = ''
             listqrcode[0].append(qrCodeBox)
         }
@@ -34,7 +34,7 @@ export const QrCodeCard = () => {
     return (
         <>
                 <div className='flex flex-col p-[2em] min-h-[50%] space-y-[2em]'>
-                    <h1 className='text-center text-white font-bold text-[24px]'>QR Code Generator</h1>
+                    <h1 className='text-center text-white font-bold text-[26px]'>QR Code Generator</h1>
 
 
                     <div id='QRCode-Box' className='flex justify-center'>

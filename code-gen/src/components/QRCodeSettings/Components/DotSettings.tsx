@@ -8,7 +8,7 @@ export const DotSettings = () => {
     return(
         <>
             <div>
-                <h2 className="text-left my-[0.5em] text-[21px] font-semibold">dot color</h2>
+                <h2 className="text-left text-[21px] font-semibold my-[1em]">Dot Color:</h2>
 
                 <div className="flex space-x-6 w-full text-left">
                     
