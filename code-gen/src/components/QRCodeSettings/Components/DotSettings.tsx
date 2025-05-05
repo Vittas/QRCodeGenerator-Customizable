@@ -13,7 +13,7 @@ export const DotSettings = () => {
                 <div className="flex space-x-6 w-full text-left">
                     
                     <div className="flex flex-col w-full  space-y-2 ">
-                        <label className="" htmlFor="">corner </label>
+                        <label className="" htmlFor="">Corner </label>
                         <input type="color" onChange={(evt) => {Context.setCornerDotColor(evt.target.value)}}
                         className="w-full rounded-md"/>
                         <select className="w-full text-black p-2 rounded-md" onChange={(evt: React.ChangeEvent<HTMLSelectElement>) => {Context.setcornerDotType(evt.target.value as CornerDotType)}} >
@@ -23,7 +23,7 @@ export const DotSettings = () => {
                     </div>
                     
                     <div className="flex flex-col w-full space-y-2">
-                        <label htmlFor="">center </label>
+                        <label htmlFor="">Center </label>
                         <input type="color" onChange={(evt) => {Context.setCenterDotColor(evt.target.value)}}
                         className="w-full rounded-md"/>
                         <select className="w-full text-black p-2 rounded-md" onChange={(evt: React.ChangeEvent<HTMLSelectElement>) => {Context.setCenterDotType(evt.target.value as DotType)}} >
